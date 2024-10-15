@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from . import models, schemas
 
 def create_stock_data(db: Session, stock_data: schemas.StockDataCreate):
-    db_stock_data = models.StockData(**stock_data.model_dump())
+    db_stock_data = models.StockData(**stock_data.dict())
     db.add(db_stock_data)
     db.commit()
     db.refresh(db_stock_data)
